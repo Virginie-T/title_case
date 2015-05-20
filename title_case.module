@@ -43,6 +43,7 @@ function title_form_submit($form, &$form_state) {
                 array_push($output_titlecased, ucfirst($word));
             }
         }
+        $output_titlecase[0].strtoupper();
         $result = implode(" ", $output_titlecased);
         $_SESSION['title_case_output'] = $result;
 
