@@ -1,0 +1,54 @@
+<?php
+
+function title_case_menu() {
+    $items['title_case'] = array(
+        'title' => 'Title Case',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('title_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['title_success'] = array(
+        'title' => 'Success',
+        'page callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function title_case_form() {
+    $form['string'] = array(
+        '#title' => 'Enter a title',
+        '#type' => 'textfield',
+        '#description' => t('Please enter a title'),
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Title case it',
+    );
+    return $form;
+}
+
+function title_case_form_submit($form, &$form_state) {
+    $string = $form_state['values']['string'];
+
+        $input_array_of_words = explode(" ", strtolower($string));
+        $output_titlecased = array();
+        $small_word_exceptions = array("of", "the", "in", "a", "and", "an");
+        foreach ($input_array_of_words as $word) {
+            if(in_array($word, $small_word_exceptions)) {
+                array_push($output_titlecased, lcfirst($word));
+            } else {
+                array_push($output_titlecased, ucfirst($word));
+            }
+        }
+        $result = implode(" ", $output_titlecased);
+        $_SESSION['title_case_output'] = $result;
+
+        $form_state['redirect'] = 'title_success';
+    }
+
+function title_case_success() {
+    $answer = $_SESSION['title_case_output'];
+    return $answer;
+}

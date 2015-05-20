@@ -1,0 +1,5 @@
+name = Title Case
+description = Capitalizes input in the format of a book/movie title
+package = Epicodus Examples
+core = 7.x
+files[] = title_case.module
