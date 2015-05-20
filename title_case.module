@@ -42,7 +42,7 @@ function title_form_submit($form, &$form_state) {
             } else {
                 array_push($output_titlecased, ucfirst($value));
             }
-            ucfirst($word[0]);
+            ucfirst($value == 0);
         }
 
         $result = implode(" ", $output_titlecased);
