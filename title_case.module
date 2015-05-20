@@ -10,7 +10,7 @@ function title_case_menu() {
     );
     $items['title_success'] = array(
         'title' => 'Success',
-        'page callback' => TRUE,
+        'page callback' => 'title_success',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
     );
