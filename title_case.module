@@ -36,14 +36,14 @@ function title_form_submit($form, &$form_state) {
         $input_array_of_words = explode(" ", strtolower($string));
         $output_titlecased = array();
         $small_word_exceptions = array("of", "the", "in", "a", "and", "an");
-        foreach ($input_array_of_words as $word) {
+        foreach ($input_array_of_words as $word => $value) {
             if(in_array($word, $small_word_exceptions)) {
-                array_push($output_titlecased, lcfirst($word));
+                array_push($output_titlecased, lcfirst($value));
             } else {
-                array_push($output_titlecased, ucfirst($word));
+                array_push($output_titlecased, ucfirst($value));
             }
         }
-        ucfirst($output_titlecased[1]);
+        ucfirst($output_titlecased[0]);
         $result = implode(" ", $output_titlecased);
         $_SESSION['title_case_output'] = $result;
 
