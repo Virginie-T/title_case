@@ -29,7 +29,7 @@ function title_form() {
     return $form;
 }
 
-function title_case_form_submit($form, &$form_state) {
+function title_form_submit($form, &$form_state) {
     $string = $form_state['values']['string'];
 
         $input_array_of_words = explode(" ", strtolower($string));
@@ -48,7 +48,7 @@ function title_case_form_submit($form, &$form_state) {
         $form_state['redirect'] = 'title_success';
     }
 
-function title_case_success() {
+function title_success() {
     $answer = $_SESSION['title_case_output'];
     return $answer;
 }
