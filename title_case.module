@@ -16,7 +16,7 @@ function title_case_menu() {
     return $items;
 }
 
-function title_case_form() {
+function title_form() {
     $form['string'] = array(
         '#title' => 'Enter a title',
         '#type' => 'textfield',
