@@ -37,12 +37,11 @@ function title_form_submit($form, &$form_state) {
         $output_titlecased = array();
         $small_word_exceptions = array("of", "the", "in", "a", "and", "an");
         foreach ($input_array_of_words as $word => $value) {
-            if(in_array($word, $small_word_exceptions)) {
+            if(in_array($word, $small_word_exceptions) && $word != 0) {
                 array_push($output_titlecased, lcfirst($value));
             } else {
                 array_push($output_titlecased, ucfirst($value));
             }
-            ucfirst($value == 0);
         }
 
         $result = implode(" ", $output_titlecased);
